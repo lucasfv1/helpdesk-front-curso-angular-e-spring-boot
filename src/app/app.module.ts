@@ -68,7 +68,11 @@ import { ToastrModule } from 'ngx-toastr';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
