@@ -10,10 +10,10 @@ import { TecnicoService } from 'src/app/services/tecnico.service';
   styleUrls: ['./tecnico-list.component.css']
 })
 export class TecnicoListComponent implements OnInit {
-  
+
   ELEMENT_DATA: Tecnico[] = []
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,22 +23,20 @@ export class TecnicoListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.findAll()
+    this.findAll();
   }
 
-  findAll(){
+  findAll() {
     this.service.findAll().subscribe(resposta => {
       this.ELEMENT_DATA = resposta
-      this.dataSource = new MatTableDataSource<Tecnico>(resposta)
-      this.dataSource.paginator = this.paginator
+      this.dataSource = new MatTableDataSource<Tecnico>(resposta);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
-  applyFilter(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
-
-

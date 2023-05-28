@@ -1,4 +1,4 @@
-export interface Credenciais{
-    email: string;
-    senha: string;
+export interface Credenciais {
+   email: string;
+   senha: string;
 }
